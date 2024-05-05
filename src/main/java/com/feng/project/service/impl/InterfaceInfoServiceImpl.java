@@ -20,11 +20,14 @@ InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, InterfaceInfo>
     @Override
     public void validInterfaceInfo(InterfaceInfo interfaceInfo, boolean add) {
 
-     String name = interfaceInfo.getName();
+
 
         if (interfaceInfo == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
+
+        String name = interfaceInfo.getName();
+
         // 创建时，所有参数必须非空
         if (add) {
             if (StringUtils.isAnyBlank(name)) {

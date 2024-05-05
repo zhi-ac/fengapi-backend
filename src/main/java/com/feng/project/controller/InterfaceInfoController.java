@@ -130,6 +130,12 @@ public class InterfaceInfoController {
         return ResultUtils.success(result);
     }
 
+    /**
+     * 调试接口
+     * @param interfaceInfoInvokeRequest
+     * @param request
+     * @return
+     */
     @PostMapping("/invoke")
     @AuthCheck(mustRole = "admin")
     public BaseResponse<Object> invokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest interfaceInfoInvokeRequest,
