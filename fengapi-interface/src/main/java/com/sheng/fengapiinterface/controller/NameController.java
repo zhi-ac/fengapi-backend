@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/name")
 public class NameController {
-    @GetMapping("/name")
+    @GetMapping("/get")
     public String getNameByGet(String name, HttpServletRequest request) {
-        System.out.println(1/0);
         System.out.println(request.getHeader("feng"));
         return "GET 你的名字是" + name;
     }
 
-    @PostMapping("/")
+    @PostMapping("/post")
     public String getNameByPost(@RequestParam String name) {
         return "POST 你的名字是" + name;
     }

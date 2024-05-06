@@ -5,21 +5,26 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: add_request_header_route
+        - id: api_route
           uri: http://localhost:8123
           predicates:
             - Path=/api/**
-          filters:
-            - AddRequestParameter=name, feng
-            - AddRequestHeader=feng, swag
-            - name: CircuitBreaker
-              args:
-                name: myCircuitBreaker
-                fallbackUri: forward:/fallback
-        - id: feng-fallback
-          uri: https://www.zhihu.com/explore
-          predicates:
-            - Path=/fallback
+
+#        - id: add_request_header_route
+#          uri: http://localhost:8123
+#          predicates:
+#            - Path=/api/**
+#          filters:
+#            - AddRequestParameter=name, feng
+#            - AddRequestHeader=feng, swag
+#            - name: CircuitBreaker
+#              args:
+#                name: myCircuitBreaker
+#                fallbackUri: forward:/fallback
+#        - id: feng-fallback
+#          uri: https://www.zhihu.com/explore
+#          predicates:
+#            - Path=/fallback
 logging:
   level:
     org:
