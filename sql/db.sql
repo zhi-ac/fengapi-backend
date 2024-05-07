@@ -53,3 +53,52 @@ create table if not exists fengapi.`user_interface_info`
     `isDelete` tinyint default 0 not null comment '是否删除(0-未删, 1-已删)'
 ) comment '用户调用接口关系';
 
+create table if not exists fengapi.`rustic_love_words`
+(
+    `id` bigint not null auto_increment comment '主键' primary key,
+    `content` varchar(256) null comment '土味情话内容',
+    `userId` bigint not null comment '创建人',
+    `createTime` datetime default CURRENT_TIMESTAMP not null comment '创建时间',
+    `updateTime` datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    `isDelete` tinyint default 0 not null comment '是否删除(0-未删, 1-已删)'
+) comment '土味情话表';
+
+
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('不要抱怨，抱我。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('最近有谣言说我喜欢你，我要澄清一下，那不是谣言。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('我怀疑你的本质是一本书，不然为什么让我越看越想睡', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('你知道我的缺点是什么吗？ 是缺点你', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('我发现昨天很喜欢你，今天也很喜欢你，而且有预感明天也会喜欢你。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“你最近是不是又胖了？”“没有啊，为什么这么说？”“那为什么在我心里的分量越来越重了？”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('近朱者赤，近你者甜', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('我是九你是三，除了你还是你', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“我觉得你这个人不适合谈恋爱”“为什么？”“适合结婚。”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('你知道你和星星有什么区别吗？星星在天上，你在我心里。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('这是我的手背，这是我的脚背，你是我的宝贝。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('猜猜我的心在哪边？左边，错了，在你那边。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('听闻先生治家有方，小女余生愿闻其详', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('你闻到什么味道了吗？没有啊，怎么你一出来空气都是甜的了', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“我想买一块地。”“什么地？”“你的死心塌地。”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“你累不累啊？”“不累。”“可是你都在我脑里跑了一天了”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“你能不能闭嘴？”“我没有说话啊”“那为什么我满脑子都是你的声音？”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“你知道我为什么感冒了吗？”“因为着凉了？”“不，因为我对你完全没有抵抗力。”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('甜有100种方式，吃糖，蛋糕，还有每天98次的想你', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('从今以后我只能称呼你为您了，因为，你在我心上。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('莫文蔚的阴天，孙燕姿的雨天周杰伦的晴天，都不如你和我聊天', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('你有没有问到什么烧焦的味道？那是我的心在燃烧', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“你为什么要害我？”“害你什么？”“害我那么喜欢你！”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('我对你的爱，就像拖拉机上山，轰轰烈烈……', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“游乐园那个，可以骑在上面的”“有音乐的叫旋转什么？”“木马。”“mua”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“面对你，我不仅善解人意，我还善解人衣。”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('你喜欢喝水吗？那你已经喜欢上70%的我了。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('“既然你把我的心已经弄乱了，那你打算什么时候来弄乱我的床？”', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('你上辈子一定是碳酸饮料吧，为什么我一看到你就能开心的冒泡。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('三十晚上的鞭炮再响，都没有我想想你那么想。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('我想去取一下东西你等一下我来娶你了。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('别让我看见你不然我见你一次就喜欢你一次。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('你知道你像什么人吗？（什么人？）我的女人。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('你近视吗？（不近视啊）那你怎么看不出我喜欢你。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('现在几点了？（12点）不，是我们幸福的起点 。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('把你的名字写在烟上吸进肺里，让你保持在离我心脏最近的地方 。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('我生在南方，活在南方，栽在你手里，总算是去过不一样的地方 。', 1);
+insert into fengapi.`rustic_love_words` (`content`, `userId`) values ('我想吃碗面 什么面 你的心里面。', 1);

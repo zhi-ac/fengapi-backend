@@ -175,9 +175,16 @@ public class InterfaceInfoController {
         // 将用户请求参数转换为com.feng.fengapiclientsdk.model.User对象
         com.feng.fengapiclientsdk.model.User user = gson.fromJson(userRequestParams, com.feng.fengapiclientsdk.model.User.class);
         // 调用YuApiClient的getUsernameByPost方法，传入用户对象，获取用户名
-        String usernameByPost = tempclient.getUserNameByPost(user);
+        String res = null;
+        if ("http://localhost:8123/api/name/user".equals(oldInterfaceInfo.getUrl())) {
+            String usernameByPost = tempclient.getUserNameByPost(user);
+            res = usernameByPost;
+        } else if ("http://localhost:8123/api/love/get/word".equals(oldInterfaceInfo.getUrl())) {
+            String rusticLoveWords = tempclient.getRusticLoveWords();
+            res = rusticLoveWords;
+        }
         // 返回成功响应，并包含调用结果
-        return ResultUtils.success(usernameByPost);
+        return ResultUtils.success(res);
     }
 
 

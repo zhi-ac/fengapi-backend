@@ -1,6 +1,6 @@
 
 
-package com.sheng.fengapiinterface.controller;
+package com.feng.fengapiinterface.controller;
 
 import com.feng.fengapiclientsdk.model.User;
 import com.feng.fengapiclientsdk.utils.SignUtils;

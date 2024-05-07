@@ -1,4 +1,4 @@
-package com.sheng.fengapiinterface;
+package com.feng.fengapiinterface;
 
 import com.feng.fengapiclientsdk.client.FengApiClient;
 import com.feng.fengapiclientsdk.model.User;

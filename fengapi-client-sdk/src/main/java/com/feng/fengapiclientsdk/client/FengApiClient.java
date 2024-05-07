@@ -86,4 +86,22 @@ public class FengApiClient {
         // 返回服务器返回的结果
         return result;
     }
+
+    public String getRusticLoveWords() {
+        // 将User对象转换为JSON字符串
+        String json = JSONUtil.toJsonStr("");
+        // 使用HttpRequest工具发起POST请求，并获取服务器的响应
+        HttpResponse httpResponse = HttpRequest.get(GATEWAY_HOST + "/api/love/get/word")
+                .addHeaders(getHeaderMap(json))
+                .body(json) // 将JSON字符串设置为请求体
+                .execute(); // 执行请求
+        // 打印服务器返回的状态码
+        System.out.println(httpResponse.getStatus());
+        // 获取服务器返回的结果
+        String result = httpResponse.body();
+        // 打印服务器返回的结果
+        System.out.println(result);
+        // 返回服务器返回的结果
+        return result;
+    }
 }
