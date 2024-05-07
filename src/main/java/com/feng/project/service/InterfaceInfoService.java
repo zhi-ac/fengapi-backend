@@ -1,7 +1,7 @@
 package com.feng.project.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.feng.project.model.entity.InterfaceInfo;
+import com.feng.fengapicommon.model.entity.InterfaceInfo;
 
 /**
  *

@@ -1,8 +1,9 @@
 package com.feng.project.service;
 
 
+
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.feng.project.model.entity.User;
+import com.feng.fengapicommon.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 

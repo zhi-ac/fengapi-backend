@@ -1,10 +1,10 @@
 package com.feng.project.aop;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.feng.fengapicommon.model.entity.User;
 import com.feng.project.annotation.AuthCheck;
 import com.feng.project.common.ErrorCode;
 import com.feng.project.exception.BusinessException;
-import com.feng.project.model.entity.User;
 import com.feng.project.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;

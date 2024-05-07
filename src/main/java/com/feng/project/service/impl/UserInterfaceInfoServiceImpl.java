@@ -2,12 +2,12 @@ package com.feng.project.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.feng.fengapicommon.model.entity.UserInterfaceInfo;
+import com.feng.fengapicommon.service.InnerUserInterfaceInfoService;
 import com.feng.project.common.ErrorCode;
 import com.feng.project.exception.BusinessException;
 import com.feng.project.mapper.UserInterfaceInfoMapper;
-import com.feng.project.model.entity.UserInterfaceInfo;
 import com.feng.project.service.UserInterfaceInfoService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**

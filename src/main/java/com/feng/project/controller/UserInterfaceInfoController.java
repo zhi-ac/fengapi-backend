@@ -2,7 +2,8 @@ package com.feng.project.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.feng.fengapiclientsdk.client.FengApiClient;
+import com.feng.fengapicommon.model.entity.User;
+import com.feng.fengapicommon.model.entity.UserInterfaceInfo;
 import com.feng.project.annotation.AuthCheck;
 import com.feng.project.common.BaseResponse;
 import com.feng.project.common.DeleteRequest;
@@ -14,8 +15,6 @@ import com.feng.project.exception.BusinessException;
 import com.feng.project.model.dto.userinterfaceinfo.UserInterfaceInfoAddRequest;
 import com.feng.project.model.dto.userinterfaceinfo.UserInterfaceInfoQueryRequest;
 import com.feng.project.model.dto.userinterfaceinfo.UserInterfaceInfoUpdateRequest;
-import com.feng.project.model.entity.User;
-import com.feng.project.model.entity.UserInterfaceInfo;
 import com.feng.project.service.UserInterfaceInfoService;
 import com.feng.project.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +36,7 @@ import java.util.List;
 @Slf4j
 public class UserInterfaceInfoController {
 
+    // TODO 擅自换成了InnerUserInterfaceInfoService是否有问题
     @Resource
     private UserInterfaceInfoService userInterfaceInfoService;
 

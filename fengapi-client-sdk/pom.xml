@@ -14,7 +14,11 @@
         <spring-boot.version>2.6.13</spring-boot.version>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>com.feng</groupId>
+            <artifactId>fengapi-common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
