@@ -99,7 +99,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.feng.fengapiinterface.FengapiInterfaceApplication</mainClass>
-                    <skip>true</skip>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>

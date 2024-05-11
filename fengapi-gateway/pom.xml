@@ -100,7 +100,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.feng.fengapigateway.FengapiGatewayApplication</mainClass>
-                    <skip>true</skip>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>

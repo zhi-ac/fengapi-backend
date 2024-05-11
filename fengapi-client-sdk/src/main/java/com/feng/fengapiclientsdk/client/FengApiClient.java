@@ -15,7 +15,8 @@ import static com.feng.fengapiclientsdk.utils.SignUtils.getSign;
 
 public class FengApiClient {
 
-    private static final String GATEWAY_HOST = "http://localhost:8090";
+    //private static final String GATEWAY_HOST = "http://localhost:8090";
+    private static final String GATEWAY_HOST = "http://10.1.20.10:8090";
 
     private String accessKey;
 
