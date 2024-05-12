@@ -75,14 +75,37 @@ public class InterfaceInfoController {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
         }
         // 2.判断该接口是否可以调用
-        // 创建一个User对象(这里先模拟一下，搞个假数据)
-        com.feng.fengapiclientsdk.model.User user = new com.feng.fengapiclientsdk.model.User();
-        user.setUsername("test");
-        String username = fengApiClient.getUserNameByPost(user);
-        if (StringUtils.isBlank(username)) {
-            // 抛出系统错误的业务异常，表示系统内部异常，并附带错误信息"接口验证失败"
+
+
+        if ("http://localhost:8123/api/name/user".equals(oldInterfaceInfo.getUrl())) {
+            // 创建一个User对象(这里先模拟一下，搞个假数据)
+            com.feng.fengapiclientsdk.model.User user = new com.feng.fengapiclientsdk.model.User();
+            user.setUsername("test");
+            String username = fengApiClient.getUserNameByPost(user);
+            if (StringUtils.isBlank(username)) {
+                // 抛出系统错误的业务异常，表示系统内部异常，并附带错误信息"接口验证失败"
+                throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口验证失败");
+            }
+        } else if ("http://localhost:8123/api/love/get/word".equals(oldInterfaceInfo.getUrl())) {
+            String rusticLoveWords = fengApiClient.getRusticLoveWords();
+            if (StringUtils.isBlank(rusticLoveWords)) {
+                // 抛出系统错误的业务异常，表示系统内部异常，并附带错误信息"接口验证失败"
+                throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口验证失败");
+            }
+        } else if ("http://localhost:8123/api/ip/get/local".equals(oldInterfaceInfo.getUrl())) {
+            com.feng.fengapiclientsdk.model.Ip ip = new com.feng.fengapiclientsdk.model.Ip();
+            ip.setIp("221.4.32.48");
+            // 返回成功响应，并包含调用结果
+            String ipLocal = fengApiClient.getIpLocal(ip);
+            if (StringUtils.isBlank(ipLocal)) {
+                // 抛出系统错误的业务异常，表示系统内部异常，并附带错误信息"接口验证失败"
+                throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口验证失败");
+            }
+        } else {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口验证失败");
         }
+
+
         // 创建一个InterfaceInfo对象
         InterfaceInfo interfaceInfo = new InterfaceInfo();
         // 设置interfaceInfo的id属性为id
@@ -167,23 +190,35 @@ public class InterfaceInfoController {
         User loginUser = userService.getLoginUser(request);
         String accessKey = loginUser.getAccessKey();
         String secretKey = loginUser.getSecretKey();
-        FengApiClient tempclient = new FengApiClient(accessKey, secretKey);
+        FengApiClient tempclient = new FengApiClient(accessKey, secretKey, fengApiClient.getGateway_host());
 
 
         // 我们只需要进行测试调用，所以我们需要解析传递过来的参数。
         Gson gson = new Gson();
-        // 将用户请求参数转换为com.feng.fengapiclientsdk.model.User对象
-        com.feng.fengapiclientsdk.model.User user = gson.fromJson(userRequestParams, com.feng.fengapiclientsdk.model.User.class);
+
         // 调用YuApiClient的getUsernameByPost方法，传入用户对象，获取用户名
+        // TODO 是否可以使用设计模式优化
         String res = null;
         if ("http://localhost:8123/api/name/user".equals(oldInterfaceInfo.getUrl())) {
+            // 将用户请求参数转换为com.feng.fengapiclientsdk.model.User对象
+            com.feng.fengapiclientsdk.model.User user = gson.fromJson(userRequestParams, com.feng.fengapiclientsdk.model.User.class);
+            if (user == null) {
+                user = new com.feng.fengapiclientsdk.model.User();
+            }
             String usernameByPost = tempclient.getUserNameByPost(user);
             res = usernameByPost;
         } else if ("http://localhost:8123/api/love/get/word".equals(oldInterfaceInfo.getUrl())) {
             String rusticLoveWords = tempclient.getRusticLoveWords();
             res = rusticLoveWords;
+        } else if ("http://localhost:8123/api/ip/get/local".equals(oldInterfaceInfo.getUrl())) {
+            com.feng.fengapiclientsdk.model.Ip ip = gson.fromJson(userRequestParams, com.feng.fengapiclientsdk.model.Ip.class);
+            if (ip == null) {
+                ip = new com.feng.fengapiclientsdk.model.Ip();
+            }
+            // 返回成功响应，并包含调用结果
+            String ipLocal = tempclient.getIpLocal(ip);
+            res = ipLocal;
         }
-        // 返回成功响应，并包含调用结果
         return ResultUtils.success(res);
     }
 

@@ -5,6 +5,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
+import com.feng.fengapiclientsdk.model.Ip;
 import com.feng.fengapiclientsdk.model.User;
 
 import java.util.HashMap;
@@ -16,7 +17,8 @@ import static com.feng.fengapiclientsdk.utils.SignUtils.getSign;
 public class FengApiClient {
 
     //private static final String GATEWAY_HOST = "http://localhost:8090";
-    private static final String GATEWAY_HOST = "http://10.1.20.10:8090";
+    //private static final String GATEWAY_HOST = "http://10.1.20.10:8090";
+    private String gateway_host;
 
     private String accessKey;
 
@@ -27,13 +29,19 @@ public class FengApiClient {
          this.secretKey = secretKey;
     }
 
+    public FengApiClient(String accessKey, String secretKey, String gateway_host) {
+        this.accessKey = accessKey;
+        this.secretKey = secretKey;
+        this.gateway_host = gateway_host;
+    }
+
     public String getNameByGet(String name) {
         // 可以单独传入http参数，这样参数会自动做URL编码，拼接在URL中
         HashMap<String, Object> paramMap = new HashMap<>();
         // 将"name"参数添加到映射中
         paramMap.put("name", name);
         // 使用HttpUtil工具发起GET请求，并获取服务器返回的结果
-        String result= HttpUtil.get(GATEWAY_HOST + "/api/name/", paramMap);
+        String result= HttpUtil.get(gateway_host + "/api/name/", paramMap);
         // 打印服务器返回的结果
         System.out.println(result);
         // 返回服务器返回的结果
@@ -45,7 +53,7 @@ public class FengApiClient {
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
         // 使用HttpUtil工具发起POST请求，并获取服务器返回的结果
-        String result= HttpUtil.post(GATEWAY_HOST + "/api/name/", paramMap);
+        String result= HttpUtil.post(gateway_host + "/api/name/", paramMap);
         System.out.println(result);
         return result;
     }
@@ -74,7 +82,7 @@ public class FengApiClient {
         // 将User对象转换为JSON字符串
         String json = JSONUtil.toJsonStr(user);
         // 使用HttpRequest工具发起POST请求，并获取服务器的响应
-        HttpResponse httpResponse = HttpRequest.post(GATEWAY_HOST + "/api/name/user")
+        HttpResponse httpResponse = HttpRequest.post(gateway_host + "/api/name/user")
                 .addHeaders(getHeaderMap(json))
                 .body(json) // 将JSON字符串设置为请求体
                 .execute(); // 执行请求
@@ -92,7 +100,7 @@ public class FengApiClient {
         // 将User对象转换为JSON字符串
         String json = JSONUtil.toJsonStr("");
         // 使用HttpRequest工具发起POST请求，并获取服务器的响应
-        HttpResponse httpResponse = HttpRequest.get(GATEWAY_HOST + "/api/love/get/word")
+        HttpResponse httpResponse = HttpRequest.get(gateway_host + "/api/love/get/word")
                 .addHeaders(getHeaderMap(json))
                 .body(json) // 将JSON字符串设置为请求体
                 .execute(); // 执行请求
@@ -104,5 +112,27 @@ public class FengApiClient {
         System.out.println(result);
         // 返回服务器返回的结果
         return result;
+    }
+
+    public String getIpLocal(Ip ip) {
+        // 将User对象转换为JSON字符串
+        String json = JSONUtil.toJsonStr(ip);
+        // 使用HttpRequest工具发起POST请求，并获取服务器的响应
+        HttpResponse httpResponse = HttpRequest.get(gateway_host + "/api/ip/get/local")
+                .addHeaders(getHeaderMap(json))
+                .body(json) // 将JSON字符串设置为请求体
+                .execute(); // 执行请求
+        // 打印服务器返回的状态码
+        System.out.println(httpResponse.getStatus());
+        // 获取服务器返回的结果
+        String result = httpResponse.body();
+        // 打印服务器返回的结果
+        System.out.println(result);
+        // 返回服务器返回的结果
+        return result;
+    }
+
+    public String getGateway_host() {
+        return gateway_host;
     }
 }

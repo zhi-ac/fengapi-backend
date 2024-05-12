@@ -21,8 +21,10 @@ public class FengApiClientConfig {
 
     private String secretKey;
 
+    private String gateway_host;
+
     @Bean
     public FengApiClient fengApiClient() {
-        return new FengApiClient(accessKey, secretKey);
+        return new FengApiClient(accessKey, secretKey, gateway_host);
     }
 }
